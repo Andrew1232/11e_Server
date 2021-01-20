@@ -8,7 +8,7 @@ from module import funci
 
 app = Flask(__name__)
 
-@app.route('/',methods=['GET'])
+@app.route('/root',methods=['GET'])
 def root():
     aa = float(request.args.get('a',default='0.',type=str))
     bb = float(request.args.get('b',default='0.',type=str))
@@ -16,6 +16,32 @@ def root():
     
     rez = "Perimetrs=" + funci.tr_per(aa,bb,cc)
     return render_template("sveikaPasaule.html",vards="Trīsstūra parametri",rezultats=rez)
+
+
+@app.route('/fib', methods=['GET'])
+def fib():
+  return render_template('tekstlaucins.html', vards='skolens',rezultats='helo')
+
+@app.route('/fibo', methods=['GET'])
+def fibo():
+  n=request.args.get('nn',default=0, type=int)
+  nn=n-1
+  a=1
+  b=0
+  c=0
+  if nn>-1:
+    for j in range(nn):
+      c=a
+      a=a+b
+      b=c   
+  elif nn==-1:
+    a=0
+  else:
+    a="neeksistējošs"
+
+
+  return render_template('fibo.html', nnn=n , kkk=a)
+
 
 @app.route('/pogasall',methods=['GET'])
 def pogasall():
