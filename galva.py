@@ -20,7 +20,7 @@ def root():
 
 @app.route('/fib', methods=['GET'])
 def fib():
-  return render_template('tekstlaucins.html', vards='skolens',rezultats='helo')
+  return render_template('tekstlaucins.html')
 
 @app.route('/fibo', methods=['GET'])
 def fibo():
@@ -38,8 +38,6 @@ def fibo():
     a=0
   else:
     a="neeksistējošs"
-
-
   return render_template('fibo.html', nnn=n , kkk=a)
 
 
